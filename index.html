@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Pricing Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <canvas id="particle-canvas"></canvas>
+    <div class="container">
+        <h1>Project Pricing Calculator</h1>
+
+        <div class="settings">
+            <button id="theme-toggle" class="theme-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.59-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.757a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 00-1.061 1.06l1.591 1.591z"/>
+                </svg>
+            </button>
+
+            <div class="form-group">
+                <label for="language">Language:</label>
+                <select id="language">
+                    <option value="en">English</option>
+                    <option value="pt">Português</option>
+                    <option value="es">Español</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="currency">Currency:</label>
+                <select id="currency">
+                    <option value="USD">USD ($)</option>
+                    <option value="BRL">BRL (R$)</option>
+                    <option value="EUR">EUR (€)</option>
+                </select>
+            </div>
+        </div>
+
+        <form id="pricing-form">
+            <div class="form-group">
+                <label for="project-name">
+                    Project Name:
+                    <button type="button" class="help-btn" data-help="project-name">!</button>
+                </label>
+                <input type="text" id="project-name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="features">
+                    Number of Features:
+                    <button type="button" class="help-btn" data-help="features">!</button>
+                </label>
+                <input type="number" id="features" min="1" value="1" required>
+            </div>
+
+            <div class="form-group">
+                <label for="complexity">
+                    Complexity:
+                    <button type="button" class="help-btn" data-help="complexity">!</button>
+                </label>
+                <select id="complexity" required>
+                    <option value="1">Low</option>
+                    <option value="2" selected>Medium</option>
+                    <option value="3">High</option>
+                    <option value="4">Very High</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="timeline">
+                    Timeline (weeks):
+                    <button type="button" class="help-btn" data-help="timeline">!</button>
+                </label>
+                <div class="timeline-controls">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="timeline-enabled">
+                        Enable timeline
+                    </label>
+                    <input type="number" id="timeline" min="1" value="4" disabled>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="programmer-level">
+                    Programmer Level:
+                    <button type="button" class="help-btn" data-help="programmer-level">!</button>
+                </label>
+                <select id="programmer-level" required>
+                    <option value="inexperienced">Inexperienced</option>
+                    <option value="junior" selected>Junior</option>
+                    <option value="pleno">Pleno</option>
+                    <option value="senior">Senior</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="team-size">
+                    Team Size:
+                    <button type="button" class="help-btn" data-help="team-size">!</button>
+                </label>
+                <select id="team-size" required>
+                    <option value="1">1 person</option>
+                    <option value="2" selected>2 people</option>
+                    <option value="3">3 people</option>
+                    <option value="4">4+ people</option>
+                </select>
+            </div>
+
+            <div class="technical-requirements">
+                <h3>Technical Requirements</h3>
+
+                <div class="checkbox-group">
+                    <label><input type="checkbox" id="frontend" checked> Frontend Development</label>
+                    <label><input type="checkbox" id="backend"> Backend Development</label>
+                    <label><input type="checkbox" id="database"> Database Design</label>
+                    <label><input type="checkbox" id="api"> API Development</label>
+                    <label><input type="checkbox" id="responsive"> Responsive Design</label>
+                    <label><input type="checkbox" id="testing"> Testing (Unit/Integration)</label>
+                    <label><input type="checkbox" id="deployment"> Deployment & Hosting Setup</label>
+                    <label><input type="checkbox" id="documentation"> Documentation</label>
+                    <label><input type="checkbox" id="maintenance"> 3 Months Maintenance</label>
+                    <label><input type="checkbox" id="support"> Technical Support</label>
+                </div>
+
+                <div class="form-group">
+                    <label for="tech-stack">Preferred Tech Stack:</label>
+                    <select id="tech-stack">
+                        <option value="standard">Standard (HTML/CSS/JS)</option>
+                        <option value="react">React/Vue/Angular</option>
+                        <option value="node">Node.js Backend</option>
+                        <option value="python">Python/Django/Flask</option>
+                        <option value="fullstack">Full Stack (MERN/MEAN)</option>
+                        <option value="mobile">Mobile App</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="hours-estimate">Estimated Hours:</label>
+                    <input type="number" id="hours-estimate" min="1" value="40" readonly>
+                </div>
+            </div>
+
+            <button type="submit">Calculate Price</button>
+        </form>
+
+        <div id="result" class="result hidden">
+            <h2>Pricing Result</h2>
+            <p id="project-result"></p>
+            <p id="price-result"></p>
+            <div id="installments"></div>
+            <p id="breakdown"></p>
+        </div>
+    </div>
+
+    <!-- Help Modal -->
+    <div id="help-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3 id="help-title"></h3>
+            <p id="help-content"></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
